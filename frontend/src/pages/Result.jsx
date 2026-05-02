@@ -23,11 +23,8 @@ function Result({ data, onBack }) {
       </h2>
 
       <FiveStepChart data={data} />
-      {/* した二つ横並び */}
-      <div style={{ display: "flex", gap: "2rem", marginTop: "2rem" }}>
-        <WordHightlight />
-        <CheerMessage />
-      </div>
+      <WordHightlight />
+      <CheerMessage />
       <ReplyTime />
       <button
         onClick={onBack}
