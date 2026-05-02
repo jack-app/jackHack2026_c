@@ -1,0 +1,22 @@
+{
+  "impressive_words": [
+  {
+		  "word": "心に響くワード(テキスト)", 
+		  "reason": "理由(テキスト)", 
+		  "score": "評価値(実数)"
+	},
+	{
+			"word": "心に響くワード(テキスト)", 
+		  "reason": "理由(テキスト)", 
+		  "score": "評価値(実数)"
+	}
+	],
+  "5_step_chart":{
+	  "Frendship level":5,
+	  "Reply speed":5,
+	  "Kindness":5,
+	  "Peace of mind":5,
+	  "Message length":5
+  }
+}
+	
