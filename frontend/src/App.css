@@ -1,184 +1,254 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+:root {
+  --primary-color: #f28482; /* 落ち着いたコーラルピンク */
+  --secondary-color: #84a59d; /* 優しいセージグリーン */
+  --accent-soft: #f5cac3; /* 柔らかなピーチ */
+  --bg-vanilla: #f7ede2; /* 温かみのあるバニラ */
+  --text-main: #5f4b44; /* 柔らかいブラウン（黒より優しい） */
+  --white: #ffffff;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+body {
+  /* 上がバニラ、下がほんのりピーチの優しいグラデーション */
+  background: linear-gradient(180deg, #f7f5ee 0%, var(--bg-vanilla) 100%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  margin: 0;
+  font-family: "Hiragino Maru Gothic ProN", "Meiryo", sans-serif;
 }
 
-#center {
+.app-container {
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 80px 2rem 2rem 2rem;
+  min-height: 100vh;
+}
+
+/* ヘッダーバー */
+.top-bar {
+  width: 100%;
+  background: var(--primary-color);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(232, 165, 152, 0.2);
+  box-sizing: border-box;
+}
+
+.heart-icon {
+  color: var(--white);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* サービスロゴ */
+.header {
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -1px;
+  /* 文字の影も柔らかく */
+  text-shadow:
+    2px 2px 0px var(--white),
+    4px 4px 0px var(--accent-soft);
+}
+
+.loading {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
 }
 
-#next-steps {
+/* メインカード */
+.card {
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 40px;
+  box-shadow: 0 15px 35px rgba(95, 75, 68, 0.05);
+  border: 4px solid var(--accent-soft);
+}
+
+.home {
   display: flex;
-  border-top: 1px solid var(--border);
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.home-text {
+  flex: 1.2;
   text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.home-text h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
+.home-text p {
+  line-height: 1.8;
+  color: var(--text-main);
+  font-size: 1.05rem;
+}
+
+.home-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* タブデザイン */
+.input-tabs {
   display: flex;
   gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+  margin-bottom: -4px;
+  padding-left: 12px;
+  z-index: 1;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.tab-button {
+  padding: 12px 24px;
+  background: var(--accent-soft);
+  color: var(--text-main);
+  border: 4px solid var(--accent-soft);
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
 }
 
-.ticks {
-  position: relative;
-  width: 100%;
+.tab-button.active {
+  background: var(--white);
+  color: var(--primary-color);
+  padding-bottom: 16px;
+  margin-top: -4px;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.input-content {
+  border: 4px solid var(--accent-soft);
+  border-radius: 0 30px 30px 30px;
+  padding: 25px;
+  background: var(--white);
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+/* アップロードエリア */
+.file-upload-area {
+  flex: 1;
+  border: 3px dashed var(--secondary-color);
+  border-radius: 20px;
+  background: #fdfaf8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.file-upload-area:hover {
+  background: #f4f9f4; /* ほんのりグリーン */
+  border-color: var(--secondary-color);
+}
+
+.file-upload-area p {
+  color: var(--secondary-color);
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.file-name {
+  margin-top: 15px;
+  background: var(--white);
+  padding: 8px 15px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+/* 入力エリア */
+textarea {
+  flex: 1;
+  background: #fdfaf8;
+  border: none;
+  border-radius: 20px;
+  padding: 1.5rem;
+  font-size: 1rem;
+  resize: none;
+  min-height: 200px;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+textarea:focus {
+  outline: none;
+  background: var(--white);
+  box-shadow: inset 0 0 0 2px var(--accent-soft);
+}
+
+/* 送信ボタン */
+.submit-btn {
+  margin-top: 25px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 6px 0px #d66d6b;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background: #f3918f;
+}
+
+.submit-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.submit-btn:disabled {
+  background: #fbd0cf;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ローディング */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid var(--accent-soft);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

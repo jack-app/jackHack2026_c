@@ -1,122 +1,96 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import { Heart } from "lucide-react";
+import Home from "./pages/Home";
+import Result from "./pages/Result";
+import { analyzeText } from "./api/client";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [view, setView] = useState("home");
+  const [resultData, setResultData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleAnalyze = async (text) => {
+    setView("loading");
+    setError(null);
+
+    // --- 【UI確認用】APIを呼ばずにダミーデータ ---
+    setTimeout(() => {
+      const dummyData = {
+        chartData: [
+          { subject: "ときめき", score: 85 },
+          { subject: "信頼度", score: 70 },
+          { subject: "親密度", score: 95 },
+          { subject: "緊張感", score: 40 },
+          { subject: "脈あり度", score: 88 },
+        ],
+        message:
+          "二人のやり取りからは、とても温かい空気感が伝わってきます！✨\n特に「親密度」が非常に高く、お互いに自然体で話せている証拠。次はあなたから少しだけ「未来の予定」を提案してみると、脈あり度がさらにスイッチするかも...！",
+      };
+      setResultData(dummyData);
+      setView("result");
+    }, 1000); // 1秒だけローディングを見せる
+    // ---------------------------------------------
+
+    /* 本番用ロジック（今はコメントアウト）
+    try {
+      const data = await analyzeText(text);
+      setResultData(data);
+      setView("result");
+    } catch (err) {
+      console.error(err);
+      setError("サーバーがおやすみ中かも...？ 起動を確認してみてね！");
+      setView("home");
+    }
+    */
+  };
+
+  const handleBack = () => {
+    setView("home");
+    setResultData(null);
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app-container">
+      <div className="top-bar">
+        <Heart className="heart-icon" fill="currentColor" size={24} />
+      </div>
 
-      <div className="ticks"></div>
+      <header className="header">
+        <h1>LOVE SWITCH</h1>
+      </header>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <main>
+        {view === "home" && (
+          <>
+            <Home onAnalyze={handleAnalyze} />
+            {error && (
+              <p
+                style={{
+                  color: "#ff7091",
+                  marginTop: "1rem",
+                  fontWeight: "bold",
+                }}
+              >
+                {error}
+              </p>
+            )}
+          </>
+        )}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        {view === "loading" && (
+          <div className="loading">
+            <div className="spinner"></div>
+            <p style={{ fontWeight: "bold", color: "#f28482" }}>
+              解析中です... 少々お待ちください
+            </p>
+          </div>
+        )}
+
+        {view === "result" && <Result data={resultData} onBack={handleBack} />}
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
