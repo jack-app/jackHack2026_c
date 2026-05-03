@@ -7,56 +7,51 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 
-const data = [
-  {
-    subject: "友好度",
-    A: 100,
-    B: 100,
-    fullMark: 100,
-  },
-  {
-    subject: "優しさ",
-    A: 80,
-    B: 100,
-    fullMark: 100,
-  },
-  {
-    subject: "返信速度",
-    A: 86,
-    B: 100,
-    fullMark: 100,
-  },
-  {
-    subject: "メッセージの長さ",
-    A: 60,
-    B: 100,
-    fullMark: 100,
-  },
-  {
-    subject: "心の余裕",
-    A: 85,
-    B: 90,
-    fullMark: 100,
-  },
-];
+function FiveStepChart({ data }) {
+  const chartData = [
+    {
+      subject: "友好度",
+      A: data?.friendship_level || 0,
+      fullMark: 5,
+    },
+    {
+      subject: "優しさ",
+      A: data?.kindness || 0,
+      fullMark: 5,
+    },
+    {
+      subject: "返信速度",
+      A: data?.reply_speed || 0,
+      fullMark: 5,
+    },
+    {
+      subject: "メッセージの長さ",
+      A: data?.message_length || 0,
+      fullMark: 5,
+    },
+    {
+      subject: "心の余裕",
+      A: data?.peace_of_mind || 0,
+      fullMark: 5,
+    },
+  ];
 
-function FiveStepChart() {
   return (
     <>
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", flexWrap: "wrap" }}>
         {/* グラフの表示エリア */}
-        <div>
+        <div style={{ maxWidth: "100%", overflow: "hidden" }}>
           <RadarChart
-            cx={300}
-            cy={250}
-            outerRadius={150}
+            cx={250}
+            cy={200}
+            outerRadius={120}
             width={500}
-            height={500}
-            data={data}
+            height={400}
+            data={chartData}
           >
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis />
+            <PolarRadiusAxis angle={30} domain={[0, 5]} />
             <Radar
               name="Mike"
               dataKey="A"

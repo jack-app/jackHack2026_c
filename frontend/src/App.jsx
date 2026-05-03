@@ -6,19 +6,9 @@ import { analyzeText } from "./api/client";
 import "./App.css";
 
 function App() {
-  const [view, setView] = useState("result");
+  const [view, setView] = useState("home");
 
-  // 2. resultData にダミーデータを入れる（nullだとエラーになるため）
-  const [resultData, setResultData] = useState({
-    chartData: [
-      { subject: "ときめき", score: 85 },
-      { subject: "信頼度", score: 70 },
-      { subject: "親密度", score: 95 },
-      { subject: "緊張感", score: 40 },
-      { subject: "脈あり度", score: 88 },
-    ],
-    message: "これはUI確認用の表示だよ！✨",
-  });
+  const [resultData, setResultData] = useState(null);
   const [error, setError] = useState(null);
 
   const handleAnalyze = async (text) => {

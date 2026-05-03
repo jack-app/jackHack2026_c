@@ -1,12 +1,9 @@
 
 import { useState } from "react";
 import "../App.css"
-import dummyData from "../mock/dummyData.json"
-
-function WordHighlight() {
-  const [count, setCount] = useState(0)
-  const words = dummyData.impressive_words;
-  words.sort((wordA, wordB)=>wordB.score - wordA.score);
+function WordHighlight({ data }) {
+  const words = data || [];
+  const sortedWords = [...words].sort((wordA, wordB) => wordB.score - wordA.score);
   return (
     <div className='impressive-words'>
       <div className='impressive-words-title'>
@@ -14,7 +11,7 @@ function WordHighlight() {
       </div>
       <div className='words-flex'>
         {
-          words.map((item, index)=>{
+          sortedWords.map((item, index)=>{
             return <div className='impressive-word'>
               <div className='word-score'>
                 <p>おすすめ度:{item.score}</p>
