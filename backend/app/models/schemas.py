@@ -1,14 +1,8 @@
 class respons:
-    def __inti__(self,impressive_words,prediction,five_step_chart):
+    def __inti__(self,impressive_words,reply_time,five_step_chart):
         self.impressive_words:impressive_words = impressive_words
-        self.prediction:prediction = prediction
+        self.reply_time:str = reply_time
         self.five_step_chart:five_step_chart = five_step_chart
-
-class prediction:
-    def __init__(self,word,reason,time):
-        self.word = word
-        self.reason = reason
-        self.time = time
 
 class impressive_words:
     def __init__(self,word,reason,score):
