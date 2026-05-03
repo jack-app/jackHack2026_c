@@ -52,12 +52,7 @@ def analyze(text: analyzeText):
                 "score":"それがどれくらいおすすめできるかの1-10段階評価"
             }}
         ],
-        "prediction":
-{{
-            "word":"するべき返信",
-            "reason":"どのような返信を予測してその返信をするべきかの説明",
-            "time":"その返信をするべき時間"
-        }},
+        "reply_time":"次いつ返信するべきかの時間をテキストで、例11:33",
         "five_step_chart":{{
             "Frendship_level":"会話中の相手の友好度の1-5段階評価",
             "Reply_speed":"会話中の相手の返信速度の1-5段階評価",
@@ -82,11 +77,7 @@ def analyze(text: analyzeText):
                 "score": 7
             }}
         ],
-        "prediction":{{
-            "word":"無理しないでね！",
-            "reason":"一言で優しさを伝え、相手が返信に困らない程度の軽さで好感度を維持します。",
-            "time":"11:30"
-        }},
+        "reply_time": "19:30",
         "five_step_chart": {{
             "friendship_level": 4,
             "reply_speed": 2,
