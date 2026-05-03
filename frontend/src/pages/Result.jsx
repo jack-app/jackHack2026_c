@@ -1,7 +1,7 @@
 import { Sparkles, RefreshCw } from "lucide-react";
 import CheerMessage from "../components/CheerMessage";
 import FiveStepChart from "../components/FiveStepChart";
-import WordHightlight from "../components/WordHighlight";
+import WordHighlight from "../components/WordHighlight";
 import ReplyTime from "../components/ReplyTime";
 
 function Result({ data, onBack }) {
@@ -22,10 +22,10 @@ function Result({ data, onBack }) {
         <Sparkles size={24} /> 分析結果
       </h2>
 
-      <FiveStepChart data={data} />
-      <WordHightlight />
-      <CheerMessage />
-      <ReplyTime />
+      <FiveStepChart data={data.five_step_chart} />
+      <WordHighlight data={data.impressive_words} />
+      <CheerMessage message={data.advice_text} />
+      <ReplyTime time={data.reply_time} />
       <button
         onClick={onBack}
         className="submit-btn"

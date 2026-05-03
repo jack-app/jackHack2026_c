@@ -4,6 +4,8 @@ from google.genai import types
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from google import genai
+import json
+
 app = FastAPI()
 data_store = []
 
@@ -21,6 +23,7 @@ class analyzeText(BaseModel):
 
 
 
+
 @app.get("/")
 def read_root():
     return {"message": "Love Switch 起動しました"}
@@ -28,7 +31,7 @@ def read_root():
 @app.post("/analyze")
 def analyze(text: analyzeText):
     print(text)
-    chat_log = text
+    chat_log = text.text
     # data_store.append(text)
     # The client gets the API key from the environment variable `GEMINI_API_KEY`.
     client = genai.Client()
@@ -49,16 +52,16 @@ def analyze(text: analyzeText):
             {{
                 "word":"相手の心に響くと推測されるキーワード,短文などを提案しここに書く",
                 "reason":"そのワードを使うと相手にどのような影響があるかの説明",
-                "score":"それがどれくらいおすすめできるかの1-10段階評価"
+                "score": 10
             }}
         ],
         "reply_time":"次いつ返信するべきかの時間をテキストで、例11:33",
         "five_step_chart":{{
-            "Frendship_level":"会話中の相手の友好度の1-5段階評価",
-            "Reply_speed":"会話中の相手の返信速度の1-5段階評価",
-            "Kindness":"会話中の相手のやさしさの1-5段階評価",
-            "Peace_of_mind":"会話中の相手の心の余裕度の1-5段階評価",
-            "Message_length":"会話中の相手のメッセージの長さの1-5段階評価"
+            "friendship_level": 5,
+            "reply_speed": 5,
+            "kindness": 5,
+            "peace_of_mind": 5,
+            "message_length": 5
         }},
         "advice_text": "利用者への応援メッセージを3文程度"
     }}
@@ -98,4 +101,4 @@ def analyze(text: analyzeText):
         )
     )
     print(response.text)
-    return response.text
+    return json.loads(response.text)
