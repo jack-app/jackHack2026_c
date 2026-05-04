@@ -7,14 +7,10 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-function LineGraphChart() {
-  const rawData = [
-    { message: "ありがとう", love: 50 },
-    { message: "OK", love: 30 },
-    { message: "さよなら", love: 10 },
-    { message: "ごめんね", love: 80 },
-  ];
-  const data = rawData.map((item, index) => ({
+function LineGraphChart({ data }) {
+  if (!data || data.length === 0) return null;
+
+  const chartData = data.map((item, index) => ({
     index: index + 1,
     ...item,
   }));
@@ -24,7 +20,7 @@ function LineGraphChart() {
       <h2 style={{ color: "#f28482" }}>時間軸でみる親密度♥</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={data}
+          data={chartData}
           margin={{ top: 20, right: 30, left: 30, bottom: 70 }}
         >
           <Tooltip

@@ -24,7 +24,7 @@ function Result({ data, onBack }) {
       </h2>
 
       <FiveStepChart data={data.five_step_chart} />
-      <LineGraphChart />
+      <LineGraphChart data={data.message_time} />
       <WordHighlight data={data.impressive_words} />
       <CheerMessage message={data.advice_text} />
       <ReplyTime time={data.reply_time} />
