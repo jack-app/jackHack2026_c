@@ -26,7 +26,7 @@ function Result({ data, onBack }) {
 
       <FiveStepChart data={data.five_step_chart} />
       <LoveMeter data={data.love_meter} />
-      <LineGraphChart />
+      <LineGraphChart data={data.message_time} />
       <WordHighlight data={data.impressive_words} />
       <CheerMessage message={data.advice_text} />
       <ReplyTime time={data.reply_time} />
