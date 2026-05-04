@@ -3,6 +3,7 @@ import CheerMessage from "../components/CheerMessage";
 import FiveStepChart from "../components/FiveStepChart";
 import WordHighlight from "../components/WordHighlight";
 import ReplyTime from "../components/ReplyTime";
+import LineGraphChart from "../components/LineGraphChart";
 
 function Result({ data, onBack }) {
   if (!data) return null;
@@ -23,6 +24,7 @@ function Result({ data, onBack }) {
       </h2>
 
       <FiveStepChart data={data.five_step_chart} />
+      <LineGraphChart />
       <WordHighlight data={data.impressive_words} />
       <CheerMessage message={data.advice_text} />
       <ReplyTime time={data.reply_time} />

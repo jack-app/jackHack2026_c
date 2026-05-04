@@ -3,35 +3,36 @@ import { Heart } from "lucide-react";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
 import { analyzeText } from "./api/client";
+import dummyData from "./mock/dummyData.json";
 import "./App.css";
 
 function App() {
-  const [view, setView] = useState("home");
+  const [view, setView] = useState("result");
 
-  const [resultData, setResultData] = useState(null);
+  const [resultData, setResultData] = useState(dummyData); //本番環境ではdummyData->null
   const [error, setError] = useState(null);
 
   const handleAnalyze = async (text) => {
     setView("loading");
     setError(null);
 
-    // --- 【UI確認用】APIを呼ばずにダミーデータ ---
-    // setTimeout(() => {
-    //   const dummyData = {
-    //     chartData: [
-    //       { subject: "ときめき", score: 85 },
-    //       { subject: "信頼度", score: 70 },
-    //       { subject: "親密度", score: 95 },
-    //       { subject: "緊張感", score: 40 },
-    //       { subject: "脈あり度", score: 88 },
-    //     ],
-    //     message:
-    //       "二人のやり取りからは、とても温かい空気感が伝わってきます！✨\n特に「親密度」が非常に高く、お互いに自然体で話せている証拠。次はあなたから少しだけ「未来の予定」を提案してみると、脈あり度がさらにスイッチするかも...！",
-    //   };
-    //   setResultData(dummyData);
-    //   setView("result");
-    // }, 1000); // 1秒だけローディングを見せる
-    // ---------------------------------------------
+    /*// --- 【UI確認用】APIを呼ばずにダミーデータ ---
+     setTimeout(() => {
+       const dummyData = {
+         chartData: [
+           { subject: "ときめき", score: 85 },
+           { subject: "信頼度", score: 70 },
+           { subject: "親密度", score: 95 },
+           { subject: "緊張感", score: 40 },
+           { subject: "脈あり度", score: 88 },
+         ],
+         message:
+           "二人のやり取りからは、とても温かい空気感が伝わってきます！✨\n特に「親密度」が非常に高く、お互いに自然体で話せている証拠。次はあなたから少しだけ「未来の予定」を提案してみると、脈あり度がさらにスイッチするかも...！",
+       };
+       setResultData(dummyData);
+       setView("result");
+     }, 1000); // 1秒だけローディングを見せる
+     ---------------------------------------------*/
 
     //本番用ロジック（今はコメントアウト）
     try {

@@ -1,9 +1,6 @@
-import { useState } from "react";
 import "../App.css";
-import dummyData from "../mock/dummyData.json";
-
-function ReplyTime() {
-  const replytime = dummyData.reply_time;
+function ReplyTime({ time }) {
+  const replytime = time;
 
   return (
     <>
