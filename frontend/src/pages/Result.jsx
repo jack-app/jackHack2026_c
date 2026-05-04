@@ -4,6 +4,7 @@ import FiveStepChart from "../components/FiveStepChart";
 import WordHighlight from "../components/WordHighlight";
 import ReplyTime from "../components/ReplyTime";
 import LineGraphChart from "../components/LineGraphChart";
+import LoveMeter from "../components/LoveMeter";
 
 function Result({ data, onBack }) {
   if (!data) return null;
@@ -24,6 +25,7 @@ function Result({ data, onBack }) {
       </h2>
 
       <FiveStepChart data={data.five_step_chart} />
+      <LoveMeter data={data.love_meter} />
       <LineGraphChart data={data.message_time} />
       <WordHighlight data={data.impressive_words} />
       <CheerMessage message={data.advice_text} />

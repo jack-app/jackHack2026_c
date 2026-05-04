@@ -44,7 +44,7 @@ def analyze(text: analyzeText):
     - スタンプや画像送信、通話履歴は省略せず、その旨を記載すること。
     - 日付が変わった場合は、それ以降のメッセージに適切な日付を適用すること。
     - "impressive_words"配列には2から4程度の候補を作成すること。
-    - "impressive_words"の10段階評価と"five_step_chart"の5段階評価と"message_time"の"love"は文字列でなく数値を出力すること。
+    - "impressive_words"の10段階評価と"five_step_chart"の5段階評価と"message_time"の"love"と"love_meter"は文字列でなく数値を出力すること。
     - "message_time"は配列で、一番古いメッセージから最新のメッセージまですべての評価をすること
 
     # 出力形式 (JSON):
@@ -70,7 +70,8 @@ def analyze(text: analyzeText):
             "message":"LINEの返信",
             "love":"二人の親密度を100段階評価"
             }}
-        ]
+        ],
+        "love_meter":"脈あり度を100段階評価"
     }}
 
     # 出力サンプル
@@ -99,13 +100,14 @@ def analyze(text: analyzeText):
         "message_time": [
             {{
                 "message": "ありがとう",
-                "love": 35
+                "love": 34
             }},
             {{
                 "message": "いいね" 
-                "love": 40
+                "love": 41
             }}
-        ]
+        ],
+        "love_meter": "84"
     }}
 
     # トーク履歴:
