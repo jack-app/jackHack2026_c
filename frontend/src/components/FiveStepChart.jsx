@@ -63,7 +63,7 @@ function FiveStepChart({ data }) {
         </div>
         {/* テキスト部分 */}
         <div style={{ width: "40%", marginLeft: "50px" }}>
-          <h2>会話相手の傾向グラフ</h2>
+          <h2>会話相手の傾向</h2>
 
           <div style={{ textAlign: "left" }}>
             <p>

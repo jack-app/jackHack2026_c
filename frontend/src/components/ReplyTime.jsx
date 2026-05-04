@@ -1,13 +1,11 @@
-import { useState } from "react";
 import "../App.css";
-import dummyData from "../mock/dummyData.json";
-
-function ReplyTime() {
-  const replytime = dummyData.reply_time;
+function ReplyTime({ time }) {
+  const replytime = time;
 
   return (
     <>
       <h2 style={{ color: "#f28482" }}>おすすめ返信時間</h2>
+      <div style={{border: '1px solid rgb(209, 209, 209)'}}></div>
       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
         <div style={{ fontSize: "25px", fontWeight: "bold", gap: "15px" }}>
           {replytime}
@@ -15,7 +13,7 @@ function ReplyTime() {
         <div
           style={{
             position: "relative",
-            marginTop: "12px",
+            marginTop: "20px",
             display: "inline-block",
           }}
         >

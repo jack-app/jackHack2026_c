@@ -253,13 +253,28 @@ textarea:focus {
   }
 }
 
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 /*AIからのアドバイスの見出し*/
 .advice {
   font-size: 1.5em;
   font-weight: bold;
   color: rgb(242, 132, 130);
-  margin: 60px 0 20px 0;
-  padding-bottom: 10px;
+  margin: 20px 0 20px 0;
+  padding-bottom: 25px;
   border-bottom: 1px solid rgb(209, 209, 209);
 }
 
@@ -268,7 +283,6 @@ textarea:focus {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   margin-top: 15px;
 }
 
@@ -276,6 +290,7 @@ textarea:focus {
   border-bottom: 1px solid rgb(209, 209, 209);
   padding: 5px;
   color: rgb(242, 132, 130);
+  margin: 15px;
 }
 .words-flex {
   padding: 10px;
