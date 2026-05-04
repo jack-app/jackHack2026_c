@@ -5,6 +5,7 @@ function ReplyTime({ time }) {
   return (
     <>
       <h2 style={{ color: "#f28482" }}>おすすめ返信時間</h2>
+      <div style={{border: '1px solid rgb(209, 209, 209)'}}></div>
       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
         <div style={{ fontSize: "25px", fontWeight: "bold", gap: "15px" }}>
           {replytime}
@@ -12,7 +13,7 @@ function ReplyTime({ time }) {
         <div
           style={{
             position: "relative",
-            marginTop: "12px",
+            marginTop: "20px",
             display: "inline-block",
           }}
         >
