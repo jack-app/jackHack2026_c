@@ -3,13 +3,12 @@ import { Heart } from "lucide-react";
 import Home from "./pages/Home";
 import Result from "./pages/Result";
 import { analyzeText } from "./api/client";
-import dummyData from "./mock/dummyData.json";
 import "./App.css";
 
 function App() {
-  const [view, setView] = useState("result");
+  const [view, setView] = useState("home");
 
-  const [resultData, setResultData] = useState(dummyData); //本番環境ではdummyData->null
+  const [resultData, setResultData] = useState(null); //本番環境ではdummyData->null
   const [error, setError] = useState(null);
 
   const handleAnalyze = async (text) => {
