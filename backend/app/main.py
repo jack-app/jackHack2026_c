@@ -44,7 +44,8 @@ def analyze(text: analyzeText):
     - スタンプや画像送信、通話履歴は省略せず、その旨を記載すること。
     - 日付が変わった場合は、それ以降のメッセージに適切な日付を適用すること。
     - "impressive_words"配列には2から4程度の候補を作成すること。
-    - "impressive_words"の10段階評価と"five_step_chart"の5段階評価は文字列でなく数値を出力すること。
+    - "impressive_words"の10段階評価と"five_step_chart"の5段階評価と"message_time"の"love"は文字列でなく数値を出力すること。
+    - "message_time"は配列で、一番古いメッセージから最新のメッセージまですべての評価をすること
 
     # 出力形式 (JSON):
     {{
@@ -55,7 +56,7 @@ def analyze(text: analyzeText):
                 "score": 10
             }}
         ],
-        "reply_time":"次いつ返信するべきかの時間をテキストで、例11:33",
+        "reply_time":"次いつ返信するべきかの時間",
         "five_step_chart":{{
             "friendship_level": 5,
             "reply_speed": 5,
@@ -63,7 +64,13 @@ def analyze(text: analyzeText):
             "peace_of_mind": 5,
             "message_length": 5
         }},
-        "advice_text": "利用者への応援メッセージを3文程度"
+        "advice_text":"利用者への応援メッセージを3文程度",
+        "message_time": [
+            {{
+            "message":"LINEの返信",
+            "love":"二人の親密度を100段階評価"
+            }}
+        ]
     }}
 
     # 出力サンプル
@@ -88,7 +95,17 @@ def analyze(text: analyzeText):
             "peace_of_mind": 3,
             "message_length": 3
         }},
-        "advice_text": "相手は少し忙しそうですが、丁寧な返信をくれています。今は焦らず、相手のペースに合わせるのが吉です。応援しています！"
+        "advice_text": "相手は少し忙しそうですが、丁寧な返信をくれています。今は焦らず、相手のペースに合わせるのが吉です。応援しています！",
+        "message_time": [
+            {{
+                "message": "ありがとう",
+                "love": 35
+            }},
+            {{
+                "message": "いいね" 
+                "love": 40
+            }}
+        ]
     }}
 
     # トーク履歴:
