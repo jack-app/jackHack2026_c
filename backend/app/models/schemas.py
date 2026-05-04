@@ -1,9 +1,10 @@
 class respons:
-    def __inti__(self,impressive_words,reply_time,five_step_chart,message_time):
+    def __inti__(self,impressive_words,reply_time,five_step_chart,message_time,love_meter):
         self.impressive_words:impressive_words = impressive_words
         self.reply_time:str = reply_time
         self.five_step_chart:five_step_chart = five_step_chart
         self.message_time:list = message_time
+        self.love_meter:int = love_meter
 
 class impressive_words:
     def __init__(self,word,reason,score):
